@@ -15,7 +15,6 @@ public class OneArray {
 
     /**
      * Створює новий одновимірний масив
-     *
      * @param count кількість елементів, має бути понад 0.
      */
     public OneArray(int count) {
@@ -27,8 +26,11 @@ public class OneArray {
      * Генерує масив.
      */
     public void generate() {
+        var min = 1;
+        var max = 999;
+        final var generator = RandomGenerator.getDefault();
         for (int i = 0; i < count; i++) {
-            array[i] = RandomGenerator.getDefault().nextInt();
+            array[i] = generator.nextInt((max - min) + 1) + min;
         }
     }
 
@@ -40,7 +42,7 @@ public class OneArray {
     public void show(String title) {
         System.out.printf("Масив '%s': ", title);
         for (int i = 0; i < count; i++) {
-            System.out.printf(array[i] + " ");
+            System.out.printf("%3d ", array[i]);
         }
         System.out.println();
     }

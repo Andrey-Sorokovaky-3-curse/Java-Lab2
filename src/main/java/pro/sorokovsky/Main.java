@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 /**
  * Клас, для запуску програми.
- *
  * @author Сороковський Андрій
  * @version 1.0
  */
@@ -14,7 +13,8 @@ public class Main {
      * Метод, для запуску програми.
      */
     static void main() {
-        level1();
+        //level1();
+        level2();
     }
 
     /**
@@ -22,16 +22,25 @@ public class Main {
      */
     private static void level1() {
         System.out.println("Рівень 1");
-        final var oneArray = new OneArray(enterCount("розмір одновимірного масиву"));
-        oneArray.generate();
-        oneArray.show("Вхідний масив");
-        oneArray.sort();
-        oneArray.show("Відсортований масив");
+        final var array = new OneArray(enterCount("розмір одновимірного масиву"));
+        array.generate();
+        array.show("Вхідний масив");
+        array.sort();
+        array.show("Відсортований масив");
     }
 
     /**
-     * Метод, для введеня числа > 0.
-     *
+     * Метод, демонстрація 2-го рівня.
+     */
+    private static void level2() {
+        System.out.println("Рівень 2");
+        final var array = new TwoArray(enterCount("розмір двовимірного масиву"));
+        array.generate();
+        array.show("Згенерований вхідний масив");
+    }
+
+    /**
+     * Метод, для введеня числа >= 0.
      * @param name ім'я змінної.
      * @return результат введення.
      */
@@ -45,9 +54,8 @@ public class Main {
                 System.out.printf("Введіть %s: ", name);
                 count = scanner.nextInt();
                 if (count >= 0) isCorrect = true;
-                System.out.println(name + " має бути >= 0, спробуйте ще.");
+                else System.out.println(name + " має бути >= 0, спробуйте ще.");
             } catch (InputMismatchException _) {
-                isCorrect = false;
                 System.out.println("Не вірне значення, спробуйте ще.");
             }
         } while (!isCorrect);
