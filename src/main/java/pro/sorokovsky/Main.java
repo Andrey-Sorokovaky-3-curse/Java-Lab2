@@ -2,7 +2,8 @@ package pro.sorokovsky;
 
 import pro.sorokovsky.console.commands.Context;
 import pro.sorokovsky.console.commands.ExitCommand;
-import pro.sorokovsky.lab2.level1.OneArray;
+import pro.sorokovsky.lab2.level1.CreateOneCommand;
+import pro.sorokovsky.lab2.level1.GenerateOneCommand;
 import pro.sorokovsky.lab2.level2.TwoArray;
 
 import java.util.InputMismatchException;
@@ -18,9 +19,10 @@ public class Main {
      * Метод, для запуску програми.
      */
     static void main() {
-        final var context = new Context("Рівень 1");
+        final var context = new Context("Головне меню");
         context
                 .addCommand(new ExitCommand())
+                .addCommand(setupLevel1())
                 .start();
         //level1();
         //level2();
@@ -29,13 +31,11 @@ public class Main {
     /**
      * Метод, демонстрація 1-го рівня.
      */
-    private static void level1() {
-        System.out.println("Рівень 1");
-        final var array = new OneArray(enterCount("розмір одновимірного масиву"));
-        array.generate();
-        array.show("Вхідний масив");
-        array.sort();
-        array.show("Відсортований масив");
+    private static Context setupLevel1() {
+        return new Context("Рівень 1")
+                .addCommand(new ExitCommand())
+                .addCommand(new CreateOneCommand())
+                .addCommand(new GenerateOneCommand());
     }
 
     /**

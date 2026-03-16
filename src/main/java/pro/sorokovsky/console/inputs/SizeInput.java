@@ -10,14 +10,11 @@ import pro.sorokovsky.console.exceptions.ValidationException;
  */
 public class SizeInput extends Input<Integer> {
     /**
-     * Отримання заклику до введення.
-     *
-     * @return "Введіть"
+     * Перетворює сире значення у число.
+     * @param value сире значення, щойно введене із клавіатури.
+     * @return Число введене із клавіатури.
+     * @throws ValidationException помилка перетворення.
      */
-    @Override
-    protected String getAction() {
-        return "Введіть";
-    }
 
     @Override
     protected Integer transform(String value) throws ValidationException {

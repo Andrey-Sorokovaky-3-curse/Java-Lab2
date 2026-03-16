@@ -1,9 +1,8 @@
 package pro.sorokovsky.console.commands;
 
-import java.util.InputMismatchException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import pro.sorokovsky.console.exceptions.ValidationException;
+
+import java.util.*;
 
 /**
  * Контекст команд, клас призначений для керування командами.
@@ -13,6 +12,7 @@ import java.util.Scanner;
  */
 public class Context extends Command {
     private final String name;
+    private final Dictionary<String, Object> claims = new Hashtable<>();
 
     private boolean isRunning;
     private final List<Command> commands = new LinkedList<>();
@@ -37,7 +37,6 @@ public class Context extends Command {
         return this;
     }
 
-
     /**
      * Запускає контекст команд.
      */
@@ -54,16 +53,6 @@ public class Context extends Command {
     }
 
     /**
-     * Повертає назву контексту.
-     *
-     * @return назва контексту.
-     */
-    @Override
-    protected String getName() {
-        return name;
-    }
-
-    /**
      * Запускає контекст.
      *
      * @param context контекст команд для виконання.
@@ -71,6 +60,53 @@ public class Context extends Command {
     @Override
     public void execute(Context context) {
         start();
+    }
+
+    /**
+     * Перевіряє наявність клейму.
+     * @param name Назва клейму.
+     * @return true якщо клейм є, false якщо його нема
+     */
+    public boolean hasClaim(String name) {
+        return claims.get(name) != null;
+    }
+
+    /**
+     * Встановлює клейм.
+     * @param name ім'я клейму.
+     * @param value значення клейму.
+     * @param <T> тип значення клейму.
+     */
+    public <T> void setClaim(String name, T value) {
+        claims.put(name, value);
+    }
+
+    /**
+     * Повертає клейм
+     * @param name ім'я клейму
+     * @param requiredType клас значення у яке потрібно перетворити клейма.
+     * @return значення клейму
+     * @param <T> тип значення клейму.
+     * @throws NullPointerException якщо клейм не знайдено.
+     */
+    public <T> T getClaim(String name, Class<T> requiredType) throws ValidationException {
+        Object value = claims.get(name);
+        if (value == null) throw new ValidationException("Клейм не знайдено");
+        else if (requiredType.isInstance(value)) {
+            return requiredType.cast(value);
+        } else {
+            throw new ValidationException("Клейм не правильного типу.");
+        }
+    }
+
+    /**
+     * Повертає назву контексту.
+     *
+     * @return назва контексту.
+     */
+    @Override
+    protected String getName() {
+        return name;
     }
 
     /**

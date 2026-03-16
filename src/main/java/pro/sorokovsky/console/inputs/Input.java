@@ -17,7 +17,9 @@ public abstract class Input<T> {
      *
      * @return заклик до дії.
      */
-    protected abstract String getAction();
+    protected String getAction() {
+        return "Введіть";
+    }
 
     /**
      * Отримання опцій введення.
