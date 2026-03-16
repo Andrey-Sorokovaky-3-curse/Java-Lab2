@@ -6,6 +6,9 @@ import pro.sorokovsky.lab2.level1.CreateOneCommand;
 import pro.sorokovsky.lab2.level1.GenerateOneCommand;
 import pro.sorokovsky.lab2.level1.ShowOneCommand;
 import pro.sorokovsky.lab2.level1.SortOneCommand;
+import pro.sorokovsky.lab2.level2.CreateTwoCommand;
+import pro.sorokovsky.lab2.level2.GenerateTwoCommand;
+import pro.sorokovsky.lab2.level2.ShowTwoCommand;
 import pro.sorokovsky.lab2.level2.TwoArray;
 
 import java.util.InputMismatchException;
@@ -49,7 +52,10 @@ public class Main {
      */
     private static Context setupLevel2() {
         return new Context("Рівень 2")
-                .addCommand(new ExitCommand());
+                .addCommand(new ExitCommand())
+                .addCommand(new CreateTwoCommand())
+                .addCommand(new GenerateTwoCommand())
+                .addCommand(new ShowTwoCommand());
     }
 
     /**
