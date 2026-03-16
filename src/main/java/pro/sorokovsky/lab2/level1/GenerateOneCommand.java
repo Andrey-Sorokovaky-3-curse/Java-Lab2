@@ -16,11 +16,19 @@ public class GenerateOneCommand extends Command
     private final StringInput stringInput = new StringInput();
     private final BooleanInput booleanInput = new BooleanInput();
 
+    /**
+     * Повертає імʼя команди.
+     * @return "Заповнити одновимірний масив випадковими значеннями"
+     */
     @Override
     protected String getName() {
         return "Заповнити одновимірний масив випадковими значеннями";
     }
 
+    /**
+     * Запускає команду.
+     * @param context контекст команд для виконання.
+     */
     @Override
     public void execute(Context context) {
         try {
@@ -29,7 +37,7 @@ public class GenerateOneCommand extends Command
                 context.getClaim(name, OneArray.class).generate();
                 System.out.println("Масив успішно заповнено випадковими значеннями.");
             } else {
-                throw new ValidationException("Одновимірний масив не знайдений");
+                throw new ValidationException("Одновимірний масив не знайдений.");
             }
         } catch (ValidationException exception) {
             System.out.println(exception.getMessage());
