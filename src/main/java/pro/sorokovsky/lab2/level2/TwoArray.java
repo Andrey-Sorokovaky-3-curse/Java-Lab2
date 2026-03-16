@@ -104,4 +104,8 @@ public class TwoArray {
             System.out.println("Сталася помилка читання файлу.");
         }
     }
+
+    public void sort() {
+
+    }
 }
