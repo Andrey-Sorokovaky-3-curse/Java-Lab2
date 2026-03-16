@@ -1,5 +1,10 @@
 package pro.sorokovsky;
 
+import pro.sorokovsky.console.commands.Context;
+import pro.sorokovsky.console.commands.ExitCommand;
+import pro.sorokovsky.lab2.level1.OneArray;
+import pro.sorokovsky.lab2.level2.TwoArray;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,8 +18,12 @@ public class Main {
      * Метод, для запуску програми.
      */
     static void main() {
+        final var context = new Context("Рівень 1");
+        context
+                .addCommand(new ExitCommand())
+                .start();
         //level1();
-        level2();
+        //level2();
     }
 
     /**
@@ -37,6 +46,9 @@ public class Main {
         final var array = new TwoArray(enterCount("розмір двовимірного масиву"));
         array.generate();
         array.show("Згенерований вхідний масив");
+        array.parseFromFile(enterString("шлях до файлу із двовимірним масивом"));
+        array.show("Вхідний масив із файлу");
+        array.saveToFile(enterString("шлях до файлу"));
     }
 
     /**
@@ -60,5 +72,18 @@ public class Main {
             }
         } while (!isCorrect);
         return count;
+    }
+
+
+    /**
+     * Запитує у користувача рядок.
+     *
+     * @param name назва змінної для введення рядка.
+     * @return введений рядок.
+     */
+    private static String enterString(String name) {
+        System.out.printf("Введіть %s: ", name);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }

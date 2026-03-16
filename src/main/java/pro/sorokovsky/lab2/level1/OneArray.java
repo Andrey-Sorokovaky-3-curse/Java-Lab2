@@ -1,4 +1,4 @@
-package pro.sorokovsky;
+package pro.sorokovsky.lab2.level1;
 
 import java.util.Arrays;
 import java.util.random.RandomGenerator;
