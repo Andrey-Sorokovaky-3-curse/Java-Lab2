@@ -33,12 +33,8 @@ public class GenerateOneCommand extends Command
     public void execute(Context context) {
         try {
             String name = stringInput.enter("назву одновимірного масиву");
-            if (context.hasClaim(name)) {
-                context.getClaim(name, OneArray.class).generate();
-                System.out.println("Масив успішно заповнено випадковими значеннями.");
-            } else {
-                throw new ValidationException("Одновимірний масив не знайдений.");
-            }
+            context.getClaim(name, OneArray.class).generate();
+            System.out.println("Масив успішно заповнено випадковими значеннями.");
         } catch (ValidationException exception) {
             System.out.println(exception.getMessage());
             final var retry = booleanInput.enter("спробувати ще");

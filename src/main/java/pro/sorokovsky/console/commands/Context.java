@@ -88,6 +88,7 @@ public class Context extends Command {
      * @return значення клейму
      * @param <T> тип значення клейму.
      * @throws NullPointerException якщо клейм не знайдено.
+     * @throws ValidationException якщо помилка валідації.
      */
     public <T> T getClaim(String name, Class<T> requiredType) throws ValidationException {
         Object value = claims.get(name);

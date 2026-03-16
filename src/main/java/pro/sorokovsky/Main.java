@@ -5,6 +5,7 @@ import pro.sorokovsky.console.commands.ExitCommand;
 import pro.sorokovsky.lab2.level1.CreateOneCommand;
 import pro.sorokovsky.lab2.level1.GenerateOneCommand;
 import pro.sorokovsky.lab2.level1.ShowOneCommand;
+import pro.sorokovsky.lab2.level1.SortOneCommand;
 import pro.sorokovsky.lab2.level2.TwoArray;
 
 import java.util.InputMismatchException;
@@ -38,7 +39,8 @@ public class Main {
                 .addCommand(new ExitCommand())
                 .addCommand(new CreateOneCommand())
                 .addCommand(new GenerateOneCommand())
-                .addCommand(new ShowOneCommand());
+                .addCommand(new ShowOneCommand())
+                .addCommand(new SortOneCommand());
     }
 
     /**
