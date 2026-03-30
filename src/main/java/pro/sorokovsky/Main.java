@@ -9,10 +9,7 @@ import pro.sorokovsky.lab2.level1.SortOneCommand;
 import pro.sorokovsky.lab2.level2.CreateTwoCommand;
 import pro.sorokovsky.lab2.level2.GenerateTwoCommand;
 import pro.sorokovsky.lab2.level2.ShowTwoCommand;
-import pro.sorokovsky.lab2.level2.TwoArray;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import pro.sorokovsky.lab2.level2.SortTwoArray;
 
 /**
  * Клас, для запуску програми.
@@ -23,7 +20,7 @@ public class Main {
     /**
      * Метод, для запуску програми.
      */
-    public static void main() {
+    static void main() {
         final var context = new Context("Головне меню");
         context
                 .addCommand(new ExitCommand())
@@ -55,7 +52,8 @@ public class Main {
                 .addCommand(new ExitCommand())
                 .addCommand(new CreateTwoCommand())
                 .addCommand(new GenerateTwoCommand())
-                .addCommand(new ShowTwoCommand());
+                .addCommand(new ShowTwoCommand())
+                .addCommand(new SortTwoArray());
     }
 
     /**

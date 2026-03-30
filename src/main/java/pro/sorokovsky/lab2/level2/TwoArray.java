@@ -105,7 +105,12 @@ public class TwoArray {
         }
     }
 
+    /**
+     * Сортує двовимірний масив, кожен рядок окремо.
+     */
     public void sort() {
-
+        for (int i = 0; i < count; i++) {
+            Arrays.sort(array[i]);
+        }
     }
 }
