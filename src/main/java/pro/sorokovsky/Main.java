@@ -51,7 +51,8 @@ public class Main {
                 .addCommand(new GenerateTwoCommand())
                 .addCommand(new ShowTwoCommand())
                 .addCommand(new SortTwoArrayCommand())
-                .addCommand(new ReadFromFileCommand());
+                .addCommand(new ReadFromFileCommand())
+                .addCommand(new SaveToFileCommand());
     }
 
     /**

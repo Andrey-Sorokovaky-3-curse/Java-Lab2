@@ -1,9 +1,12 @@
 package pro.sorokovsky.lab2.level2;
 
+import pro.sorokovsky.console.exceptions.ValidationException;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
 import java.util.random.RandomGenerator;
@@ -99,12 +102,15 @@ public class TwoArray {
      * Записує двовимірний масив у файл.
      *
      * @param filePath шлях до файлу у який треба записати двовимірний масив.
+     * @throws ValidationException якщо файл вже існує.
      */
-    public void saveToFile(String filePath) {
+    public void saveToFile(String filePath) throws ValidationException {
         try {
             final var file = Paths.get(filePath);
-        } catch (InvalidPathException _) {
-            System.out.println("Сталася помилка читання файлу.");
+            if (Files.exists(file)) throw new ValidationException("Файл вже існує.");
+            Files.writeString(file, toString(), StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            throw new ValidationException("Помилка у створені чи запису файлу.");
         }
     }
 
