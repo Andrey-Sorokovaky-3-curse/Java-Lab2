@@ -101,6 +101,16 @@ public class Context extends Command {
     }
 
     /**
+     * Видаляє клейм.
+     *
+     * @param name ім'я клейму
+     */
+    public void clearClaim(String name) {
+        if (!hasClaim(name)) return;
+        claims.remove(name);
+    }
+
+    /**
      * Повертає назву контексту.
      *
      * @return назва контексту.

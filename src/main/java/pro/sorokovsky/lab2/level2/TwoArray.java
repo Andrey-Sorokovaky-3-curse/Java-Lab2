@@ -32,6 +32,14 @@ public class TwoArray {
     }
 
     /**
+     * Створює новий двовимірний масив.
+     */
+    public TwoArray() {
+        count = 0;
+        array = new int[count][count];
+    }
+
+    /**
      * Генерує двовимірний масив
      */
     public void generate() {
@@ -51,12 +59,7 @@ public class TwoArray {
      */
     public void show(String name) {
         System.out.printf("Масив '%s': %n", name);
-        for (int i = 0; i < count; i++) {
-            for (int j = 0; j < count; j++) {
-                System.out.printf("%3d ", array[i][j]);
-            }
-            System.out.println();
-        }
+        System.out.println(this);
     }
 
     /**
@@ -112,5 +115,45 @@ public class TwoArray {
         for (int i = 0; i < count; i++) {
             Arrays.sort(array[i]);
         }
+    }
+
+    /**
+     * Перевіряє чи інший об'єкт ідентичний поточному.
+     *
+     * @param obj інший об'єкт.
+     * @return true, якщо ідентичні - в іншому випадку false.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj instanceof TwoArray other) {
+            if (count != other.count) return false;
+            for (int i = 0; i < count; i++) {
+                for (int j = 0; j < count; j++) {
+                    if (array[i][j] != other.array[i][j]) return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Перетворює двовимірний масив у рядкове представлення.
+     *
+     * @return Рядкове представлення
+     */
+    @Override
+    public String toString() {
+        final var builder = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            final var rowBuilder = new StringBuilder();
+            for (int j = 0; j < count; j++) {
+                rowBuilder.append("%3d ".formatted(array[i][j]));
+            }
+            builder.append(rowBuilder).append("\n");
+        }
+        return builder.toString();
     }
 }

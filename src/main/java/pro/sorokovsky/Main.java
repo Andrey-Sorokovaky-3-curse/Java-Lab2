@@ -6,10 +6,7 @@ import pro.sorokovsky.lab2.level1.CreateOneCommand;
 import pro.sorokovsky.lab2.level1.GenerateOneCommand;
 import pro.sorokovsky.lab2.level1.ShowOneCommand;
 import pro.sorokovsky.lab2.level1.SortOneCommand;
-import pro.sorokovsky.lab2.level2.CreateTwoCommand;
-import pro.sorokovsky.lab2.level2.GenerateTwoCommand;
-import pro.sorokovsky.lab2.level2.ShowTwoCommand;
-import pro.sorokovsky.lab2.level2.SortTwoArray;
+import pro.sorokovsky.lab2.level2.*;
 
 /**
  * Клас, для запуску програми.
@@ -53,7 +50,8 @@ public class Main {
                 .addCommand(new CreateTwoCommand())
                 .addCommand(new GenerateTwoCommand())
                 .addCommand(new ShowTwoCommand())
-                .addCommand(new SortTwoArray());
+                .addCommand(new SortTwoArrayCommand())
+                .addCommand(new ReadFromFileCommand());
     }
 
     /**
