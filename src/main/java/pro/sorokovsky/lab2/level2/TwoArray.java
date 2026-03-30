@@ -1,6 +1,7 @@
 package pro.sorokovsky.lab2.level2;
 
 import pro.sorokovsky.console.exceptions.ValidationException;
+import pro.sorokovsky.console.inputs.IntegerInput;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +16,7 @@ import java.util.random.RandomGenerator;
  * Клас, який дозволяє працювати з двовимірними масивами.
  *
  * @author Сороковський Андрій
- * @version 1.0
+ * @version 1.0.0
  */
 public class TwoArray {
     private int count;
@@ -58,7 +59,7 @@ public class TwoArray {
     /**
      * Виводить двовимірний масив на екран.
      *
-     * @param name - Ім'я масиву.
+     * @param name ім'я масиву.
      */
     public void show(String name) {
         System.out.printf("Масив '%s': %n", name);
@@ -95,6 +96,19 @@ public class TwoArray {
             System.out.println("Сталася помилка читання файлу.");
             array = backup;
             count = backup.length;
+        }
+    }
+
+    /**
+     * Запитує двовимірний масив із клавіатури.
+     */
+    public void enterFromKeyBoard() {
+        final var input = new IntegerInput();
+        for (int i = 0; i < count; i++) {
+            System.out.printf("Рядок №%d.%n", i);
+            for (int j = 0; j < count; j++) {
+                array[i][j] = input.enter("%d-й елемент".formatted(j));
+            }
         }
     }
 

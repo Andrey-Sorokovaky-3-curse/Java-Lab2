@@ -52,7 +52,8 @@ public class Main {
                 .addCommand(new ShowTwoCommand())
                 .addCommand(new SortTwoArrayCommand())
                 .addCommand(new ReadFromFileCommand())
-                .addCommand(new SaveToFileCommand());
+                .addCommand(new SaveToFileCommand())
+                .addCommand(new EnterFromKeyboardCommand());
     }
 
     /**
