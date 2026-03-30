@@ -7,6 +7,7 @@ import pro.sorokovsky.lab2.level1.GenerateOneCommand;
 import pro.sorokovsky.lab2.level1.ShowOneCommand;
 import pro.sorokovsky.lab2.level1.SortOneCommand;
 import pro.sorokovsky.lab2.level2.*;
+import pro.sorokovsky.lab2.level3.AreTwoArraysEqualCommand;
 
 /**
  * Клас, для запуску програми.
@@ -62,6 +63,14 @@ public class Main {
      */
     private static Context setupLevel3() {
         return new Context("Рівень 3")
-                .addCommand(new ExitCommand());
+                .addCommand(new ExitCommand())
+                .addCommand(new CreateTwoCommand())
+                .addCommand(new GenerateTwoCommand())
+                .addCommand(new EnterFromKeyboardCommand())
+                .addCommand(new ReadFromFileCommand())
+                .addCommand(new ShowTwoCommand())
+                .addCommand(new SaveToFileCommand())
+                .addCommand(new SortTwoArrayCommand())
+                .addCommand(new AreTwoArraysEqualCommand());
     }
 }

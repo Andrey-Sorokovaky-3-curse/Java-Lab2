@@ -34,7 +34,7 @@ public class SortTwoArrayCommand extends Command {
     @Override
     public void execute(Context context) {
         try {
-            String name = stringInput.enter("назву одновимірного масиву");
+            String name = stringInput.enter("назву масиву");
             context.getClaim(name, TwoArray.class).sort();
         } catch (ValidationException exception) {
             System.out.println(exception.getMessage());
